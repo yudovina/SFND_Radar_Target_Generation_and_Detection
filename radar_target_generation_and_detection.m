@@ -34,15 +34,12 @@ maxVelocity = 100;
 % chirp using the requirements above.
 B = c / (2 * rangeResolution);  % aka Bsweep; formula from lesson 3.1
 
-% https://bu.edu.eg/portal/uploads/Engineering,%20Shoubra/Electrical%20Engineering/2443/crs-14023/Files/doppler_1.pdf
-% max velocity is given by maxVelocity = c / (4 * Tchirp * fc)
-% so, Tchirp = c / (maxVelocity * fc * 4)
-% (it would have been nice for the course to cover this...)
-Tchirp = c / (maxVelocity * fc * 4);
-
-% lesson 3.2 also suggested that Tchirp should be at least 5-6 times larger
-% than 2 * maxRange/c, let's check if it is:
-fprintf('Tchirp is %.02f times (2*maxRange/c)\n', Tchirp / (2 * maxRange / c));
+% Lesson 3.2 suggested that Tchirp should be "at least 5-6 times larger
+% than 2 * maxRange / c.  The "at least" part is so that you don't have to
+% worry about chirp boundary effects.  However, the actual value of Tchirp
+% should presumably be related to the velocity range or resolution or
+% something?  In short, I have NO IDEA why this is the unique right answer.
+Tchirp = 5.5 * (2 * maxRange / c);
 
 slope = B / Tchirp;  % Lesson 2.4
                                                       
